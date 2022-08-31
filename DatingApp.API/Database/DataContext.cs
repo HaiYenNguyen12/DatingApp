@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DatingApp.DatingApp.API.database.entities;
+using DatingApp.API.database.entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingApp.DatingApp.API.database
+namespace DatingApp.API.database
 {
     public class DataContext : DbContext
     {

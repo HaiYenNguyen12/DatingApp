@@ -1,31 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DatingApp.API.database.entities
+namespace DatingApp.API.DTOs
 {
-    [Table("User")]
-    public class User
+    public class RegisterDto
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [StringLength(32)]
+        [EmailAddress]
         public string  Username { get; set; }
 
         
         [Required]
         [StringLength(255)]
         public string  Email { get; set; }
+        [Required]
+        public string Password { get; set; }
 
-
-        
-        public byte[] passwordSalt { get; set; }
-   
-        public byte[] passwordHash { get; set; }
     }
 }

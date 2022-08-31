@@ -1,4 +1,5 @@
-using DatingApp.DatingApp.API.database;
+using DatingApp.API.database;
+using DatingApp.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<DataContext>(
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
         );
+        builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
