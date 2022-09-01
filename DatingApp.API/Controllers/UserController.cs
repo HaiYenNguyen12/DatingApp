@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DatingApp.API.Controller;
 using DatingApp.API.database;
 using DatingApp.API.database.entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
@@ -20,12 +21,14 @@ namespace DatingApp.API.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
             return Ok(_context.Users);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<User> Get(int id) 
         {
