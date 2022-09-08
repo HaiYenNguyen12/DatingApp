@@ -15,6 +15,7 @@ namespace DatingApp.API.Controllers
     public class UserController : BaseApiController
     {
         private const string V = "admin";
+        private const string Y = "user";
         public readonly DataContext _context;
         
 
