@@ -34,7 +34,8 @@ namespace DatingApp.API.Controller
                 Username = registerDto.Username,
                 Email = registerDto.Email,
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(registerDto.Password)),
-                passwordSalt = hmac.Key
+                passwordSalt = hmac.Key,
+                Role = registerDto.Role
             };
             _context.Users.Add(user);
             _context.SaveChanges();

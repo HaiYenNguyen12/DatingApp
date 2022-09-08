@@ -24,6 +24,7 @@ namespace DatingApp.API.Services
             var claims  =  new List<Claim>(){
                 new Claim(JwtRegisteredClaimNames.NameId, user.Username),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimTypes.Role,user.Role)
 
             };
             var symetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configration["TokenKey"]));

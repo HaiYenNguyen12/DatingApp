@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.API.Database.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220831110516_changePW")]
-    partial class changePW
+    [Migration("20220908101544_Role_field")]
+    partial class Role_field
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,15 +32,21 @@ namespace DatingApp.API.Database.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(32)
                         .HasColumnType("varchar(32)");
 
                     b.Property<byte[]>("passwordHash")
+                        .IsRequired()
                         .HasColumnType("longblob");
 
                     b.Property<byte[]>("passwordSalt")
+                        .IsRequired()
                         .HasColumnType("longblob");
 
                     b.HasKey("Id");

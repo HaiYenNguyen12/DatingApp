@@ -22,7 +22,7 @@ namespace DatingApp.API.database.entities
         [StringLength(255)]
         public string  Email { get; set; }
 
-
+        public string Role { get; set; }
         
         public byte[] passwordSalt { get; set; }
    

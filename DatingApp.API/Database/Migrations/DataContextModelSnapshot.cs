@@ -30,6 +30,10 @@ namespace DatingApp.API.Database.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(32)

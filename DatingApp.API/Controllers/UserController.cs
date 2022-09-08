@@ -14,6 +14,7 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class UserController : BaseApiController
     {
+        private const string V = "admin";
         public readonly DataContext _context;
         
 
@@ -21,7 +22,7 @@ namespace DatingApp.API.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles= V)]
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
