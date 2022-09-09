@@ -1,12 +1,12 @@
-using DatingApp.API.database;
-using DatingApp.API.database.entities;
+using DatingApp.API.Database;
+using DatingApp.API.Database.entities;
 using DatingApp.API.DTOs;
 using DatingApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DatingApp.API.Controller
+namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

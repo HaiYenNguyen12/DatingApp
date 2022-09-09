@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using DatingApp.API.database.entities;
+using DatingApp.API.Database.entities;
 using DatingApp.API.Services;
 using Microsoft.IdentityModel.Tokens;
 

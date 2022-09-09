@@ -1,10 +1,9 @@
-using System.Text;
-using DatingApp.API.database;
+
+using DatingApp.API.Database;
+using DatingApp.API.Database.entities;
 using DatingApp.API.Extensions;
-using DatingApp.API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -49,4 +48,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Minimal Api
+
+app.MapGet("/minimalapi/song", async (DataContext context)=> await context.Songs.ToListAsync());
+app.MapPost("/minimalapi/song", async (DataContext context, Song song) =>
+{
+    context.Songs.Add(song);
+    await context.SaveChangesAsync();
+    return Results.Ok(await context.Songs.ToListAsync());
+
+});
+
+app.MapGet("/minimalapi/song/{id}", async(DataContext context, int id)=>
+
+    await context.Songs.FindAsync(id) is Song song ?
+    Results.Ok(song) :
+    Results.NotFound("This song doesn't exist.")
+);
 app.Run();

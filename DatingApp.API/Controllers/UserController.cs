@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DatingApp.API.Controller;
-using DatingApp.API.database;
-using DatingApp.API.database.entities;
+using DatingApp.API.Controllers;
+using DatingApp.API.Database;
+using DatingApp.API.Database.entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
