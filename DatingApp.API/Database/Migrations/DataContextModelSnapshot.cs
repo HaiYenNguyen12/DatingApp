@@ -19,7 +19,7 @@ namespace DatingApp.API.Database.Migrations
                 .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("DatingApp.API.database.entities.Playlist", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.Playlist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace DatingApp.API.Database.Migrations
                     b.ToTable("Playlist");
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.RemarkablePoint", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.RemarkablePoint", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace DatingApp.API.Database.Migrations
                     b.ToTable("RemarkablePoint");
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.Song", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.Song", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,7 +102,7 @@ namespace DatingApp.API.Database.Migrations
                     b.ToTable("Song");
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.User", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,9 +150,9 @@ namespace DatingApp.API.Database.Migrations
                     b.ToTable("PlaylistSong");
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.Playlist", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.Playlist", b =>
                 {
-                    b.HasOne("DatingApp.API.database.entities.User", "User")
+                    b.HasOne("DatingApp.API.Database.entities.User", "User")
                         .WithMany("Playlists")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -161,11 +161,11 @@ namespace DatingApp.API.Database.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.Song", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.Song", b =>
                 {
-                    b.HasOne("DatingApp.API.database.entities.RemarkablePoint", "RemarkablePoint")
+                    b.HasOne("DatingApp.API.Database.entities.RemarkablePoint", "RemarkablePoint")
                         .WithOne("Song")
-                        .HasForeignKey("DatingApp.API.database.entities.Song", "RemarkablePointId")
+                        .HasForeignKey("DatingApp.API.Database.entities.Song", "RemarkablePointId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -174,26 +174,26 @@ namespace DatingApp.API.Database.Migrations
 
             modelBuilder.Entity("PlaylistSong", b =>
                 {
-                    b.HasOne("DatingApp.API.database.entities.Playlist", null)
+                    b.HasOne("DatingApp.API.Database.entities.Playlist", null)
                         .WithMany()
                         .HasForeignKey("PlaylistsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DatingApp.API.database.entities.Song", null)
+                    b.HasOne("DatingApp.API.Database.entities.Song", null)
                         .WithMany()
                         .HasForeignKey("SongsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.RemarkablePoint", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.RemarkablePoint", b =>
                 {
                     b.Navigation("Song")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DatingApp.API.database.entities.User", b =>
+            modelBuilder.Entity("DatingApp.API.Database.entities.User", b =>
                 {
                     b.Navigation("Playlists");
                 });

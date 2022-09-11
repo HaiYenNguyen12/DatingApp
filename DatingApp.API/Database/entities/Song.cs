@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DatingApp.API.Database.entities
@@ -20,8 +21,7 @@ namespace DatingApp.API.Database.entities
         public string Author { get; set; } = String.Empty;
         public bool favorite {get; set;}
         public double Price { get; set; }
-
-        public List<Playlist> Playlists { get; set; }
+        public virtual  ICollection<Playlist> Playlists { get; set; }
 
         public RemarkablePoint RemarkablePoint { get; set; }
         public int RemarkablePointId {get; set;}

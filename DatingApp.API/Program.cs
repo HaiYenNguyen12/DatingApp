@@ -65,4 +65,39 @@ app.MapGet("/minimalapi/song/{id}", async(DataContext context, int id)=>
     Results.Ok(song) :
     Results.NotFound("This song doesn't exist.")
 );
+
+
+app.MapPut("/minimalapi/song/{id}", async (DataContext context, int id, Song song)=>
+{
+            var song_old = await context.Songs.FirstOrDefaultAsync(u => u.Id == id);
+            if (song_old == null) {
+                return Results.NotFound("Ahihi.Not found");
+            }
+                song_old.Name = song.Name;
+                song_old.Singer = song.Singer;
+                song_old.Author = song.Author;
+                song_old.favorite = song.favorite;
+                song_old.Price = song.Price;
+                song_old.Playlists = song.Playlists;
+                song_old.RemarkablePoint  =  song.RemarkablePoint;
+                song_old.RemarkablePointId = song.RemarkablePointId;
+
+                await context.SaveChangesAsync();
+                return Results.Ok(await context.Songs.ToListAsync());
+});
+
+app.MapDelete("/minimalapi/song/{id}", async(DataContext context, int id)=>
+{
+            var song_old = await context.Songs.FirstOrDefaultAsync(u => u.Id == id);
+            if (song_old == null) {
+                return Results.NotFound("Ahihi.Not found item to delete");
+            }
+               context.Songs.Remove(song_old);
+
+                await context.SaveChangesAsync();
+                return Results.Ok(await context.Songs.ToListAsync());
+});
+
+
+
 app.Run();

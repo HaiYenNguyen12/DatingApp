@@ -21,6 +21,6 @@ namespace DatingApp.API.Database.entities
          public string Description { get; set; }
          public int UserId { get; set; }
          public User User { get; set; }
-         public List<Song> Songs { get; set; }
+         public virtual ICollection<Song> Songs { get; set; }
     }
 }

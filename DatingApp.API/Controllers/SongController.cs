@@ -18,7 +18,9 @@ namespace DatingApp.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Song>>>  GetSongs()
         {
-            return Ok(await _context.Songs.ToListAsync());
+            
+            return Ok(await _context.Songs
+            .ToListAsync());
         }
 
         [HttpPost]
@@ -33,7 +35,7 @@ namespace DatingApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<Song>>>  GetSong(int id)
         {
-            var song = _context.Songs.FirstOrDefaultAsync(u => u.Id == id);
+            var song = await _context.Songs.FirstOrDefaultAsync(u => u.Id == id);
             if (song == null) {
                 return NotFound("This song doesn't exist.");
             }
@@ -42,5 +44,44 @@ namespace DatingApp.API.Controllers
             // return Ok(await _context.Songs.ToListAsync());
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<List<Song>>> UpdateSong (Song song , int id)
+        {
+            var song_old = await _context.Songs.FirstOrDefaultAsync(u => u.Id == id);
+            if (song_old == null) {
+                return NotFound("This song doesn't exist.");
+            }
+                song_old.Name = song.Name;
+                song_old.Singer = song.Singer;
+                song_old.Author = song.Author;
+                song_old.favorite = song.favorite;
+                song_old.Price = song.Price;
+                song_old.Playlists = song.Playlists;
+                song_old.RemarkablePoint  =  song.RemarkablePoint;
+                song_old.RemarkablePointId = song.RemarkablePointId;
+
+                await _context.SaveChangesAsync();
+                return Ok(await _context.Songs.ToListAsync());
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<Song>>>  DeleteSong(int id)
+        {
+            var song = await _context.Songs.FirstOrDefaultAsync(u => u.Id == id);
+            if (song == null) {
+                return NotFound("This song doesn't exist.");
+            }
+            _context.Songs.Remove(song);
+
+            await _context.SaveChangesAsync();
+
+             return Ok(await _context.Songs.ToListAsync());
+
+            // return Ok(await _context.Songs.ToListAsync());
+        }
+
     }
+
+
+
 }

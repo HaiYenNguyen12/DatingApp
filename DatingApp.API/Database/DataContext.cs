@@ -14,5 +14,7 @@ namespace DatingApp.API.Database
         public DbSet<Song> Songs { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<RemarkablePoint> RemarkablePoints { get; set; }
+
+
     }
 }
