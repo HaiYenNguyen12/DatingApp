@@ -27,7 +27,5 @@ namespace DatingApp.API.Database.entities
         public byte[] passwordSalt { get; set; }
    
         public byte[] passwordHash { get; set; }
-
-        public List<Playlist> Playlists { get; set; }
     }
 }

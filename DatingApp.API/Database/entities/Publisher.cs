@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace DatingApp.API.Database.entities
 {
-    [Table("RemarkablePoint")]
-    public class RemarkablePoint
+    [Table("Publisher")]
+    public class Publisher
     {
         [Key]
         public int Id { get; set; }
-
-        public string Symbol { get; set; }
-        public double Star { get; set; }
-
-        public Song Song {get; set;}
+        public string? Name  { get; set; } 
 
 
-    
+        //Add navigation properties
+
+        public List<Book>  Books { get; set; }
+        
     }
 }
